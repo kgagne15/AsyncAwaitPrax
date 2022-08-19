@@ -1,4 +1,5 @@
 let baseUrl = 'http://numbersapi.com/'
+let $body = $('body')
 
 // Number 1
 async function numFacts() {
@@ -14,7 +15,10 @@ async function multipleNumFacts() {
     let maxNum = 18
     res = await axios.get(baseUrl + minNum + '..' + maxNum + '?json')
     for (let i = minNum; i <= maxNum; i++) {
-        console.log(res.data[i])
+        let $item = `
+        <p>${res.data[i]}</p>
+        `
+        $body.append($item)
     }
 }
 
